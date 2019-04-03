@@ -1,0 +1,40 @@
+#define inputPin A0            // choose the input pin (for PIR sensor)
+int pirState = LOW;             // we start, assuming no motion detected
+int val = 0;  
+int x=1;  
+#define key 3// variable for reading the pin status
+ 
+void setup() {
+  pinMode(2, OUTPUT);      // declare LED as output
+  pinMode(inputPin, INPUT);     // declare sensor as input
+  pinMode(key,OUTPUT);
+  Serial.begin(9600);
+
+}
+
+void loop()
+{
+
+
+
+ if(digitalRead(key)==HIGH)
+  {
+ val=analogRead(inputPin);
+ if(val>=10)
+   {
+    digitalWrite(2,HIGH);
+    Serial.println(x);
+    x++;
+   }
+  }
+   if(digitalRead(key)==LOW)
+  digitalWrite(2,LOW);
+  delay(3000);
+}
+
+
+
+
+
+
+  
